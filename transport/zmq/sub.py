@@ -48,7 +48,7 @@ if __name__ == "__main__":
     import getopt
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], ":", ["limit=", "hello"])
+        opts, args = getopt.getopt(sys.argv[1:], ":", ["limit=", "ip=", "port=", "hello"])
     except getopt.GetoptError, err:
         print(str(err))
         sys.exit(2)
@@ -63,6 +63,12 @@ if __name__ == "__main__":
         if o in ["--limit"]:
             run_limit = int(a)
 
+        if o in ["--ip"]:
+            run_ip = a
+
+        if o in ["--port"]:
+            run_port = a
+
     if run_hello:
         # Force a limit
         if run_limit == 0:
@@ -70,7 +76,7 @@ if __name__ == "__main__":
 
         print("Running Hello World as Subscriber...")
 
-        sub = Subscriber()
+        sub = Subscriber(ip=run_ip, port=run_port)
         sub.hello_world(limit=run_limit)
 
         print("Done.")

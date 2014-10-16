@@ -5,8 +5,16 @@ import zmq
 
 class Base(object):
     def __init__(self, ip='127.0.0.1', port='5678', topic='', verbose=False, *args, **kwargs):
-        self.ip = ip
-        self.port = port
+        if ip is None:
+            self.ip = '127.0.0.1'
+        else:
+            self.ip = ip
+
+        if port is None:
+            self.port = '5678'
+        else:
+            self.port = port
+
         self.topic = topic
         self.context = None
         self.socket = None
