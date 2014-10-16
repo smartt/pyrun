@@ -22,7 +22,10 @@ class Puller(Base):
 
             task = self._as_task(data)
 
-            runner.run(**task)
+            try:
+                runner.run(**task)
+            except:
+                pass
 
     def hello_world(self, limit=20):
         c = 0
