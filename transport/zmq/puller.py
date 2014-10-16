@@ -18,20 +18,18 @@ class Puller(Base):
 
     def run(self, verbose=False):
         while True:
-            raw_data = self.socket.recv()
+            data = self.recv_json()
 
-            task = self._extract_msg(raw_data)
+            task = self._as_task(data)
 
             pyrun.run(**task)
 
     def hello_world(self, limit=20):
         c = 0
         while True:
-            raw_data = self.socket.recv()
+            data = self.recv_json()
 
-            task = self._extract_msg(raw_data)
-
-            print(task)
+            print(data)
 
             c += 1
 

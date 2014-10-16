@@ -12,9 +12,6 @@ class Pusher(Base):
         self.socket_type = zmq.PUSH
         self._connect()
 
-    def send(self, msg):
-        self.socket.send(self._pack_msg(msg))
-
     def hello_world(self):
         """
         A simple test that will send a series of messages to all listeners.
@@ -24,7 +21,7 @@ class Pusher(Base):
 
             print("  sending: {}".format(msg))
 
-            self.send({'msg': msg})
+            self.send_json({'msg': msg})
 
 
 # --------------------------------------------------

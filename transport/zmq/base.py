@@ -58,10 +58,13 @@ class Base(object):
         if self.verbose:
             print("json: ", json_data)
 
+        return self._as_task(json_data)
+
+    def _as_task(self, data):
         d = self._get_default_struct()
 
         # Merge
-        for k, v in json_data.items():
+        for k, v in data.items():
             d[k] = v
 
         return d
@@ -71,4 +74,15 @@ class Base(object):
             topic=self.topic,
             msg=json.dumps(data)
         )
+
+    def send(self, msg):
+        self.socket.send(msg)
+
+    def send_json(self, msg):
+        self.socket.send(json.dumps(msg))
+
+    def recv_json(self):
+        data = self.socket.recv()
+
+        return json.loads(data)
 
