@@ -71,7 +71,7 @@ def package_for_path(path):
 
 
 # --------------------------------------------------
-def run(package=None, function='run', method=None, model=None, orm=None, id=None, args=None, path_extras=None, verbose=False):
+def run(package=None, function='run', method=None, model=None, orm=None, id=None, action=None, args=None, path_extras=None, verbose=False):
     if verbose:
         print("---- pyrun.run() ----")
         print("package: {}".format(package))
@@ -79,6 +79,7 @@ def run(package=None, function='run', method=None, model=None, orm=None, id=None
         print("method: {}".format(method))
         print("model: {}".format(model))
         print("id: {}".format(id))
+        print("action: {}".format(action))
         print("args: {}".format(args))
         print("path_extras: {}".format(path_extras))
         print("------------------------")
