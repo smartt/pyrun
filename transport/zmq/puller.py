@@ -1,6 +1,6 @@
 import zmq
 
-import pyrun
+from pyrun import runner
 
 from base import Base
 
@@ -22,7 +22,7 @@ class Puller(Base):
 
             task = self._as_task(data)
 
-            pyrun.run(**task)
+            runner.run(**task)
 
     def hello_world(self, limit=20):
         c = 0
@@ -79,6 +79,11 @@ if __name__ == "__main__":
         sub.hello_world(limit=run_limit)
 
         print("Done.")
+
+    else:
+        sub = Puller(ip=run_ip, port=run_port)
+        sub.run()
+
 
 
 

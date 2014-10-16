@@ -1,6 +1,6 @@
 import zmq
 
-import pyrun
+from pyrun import runner
 
 from base import Base
 
@@ -23,7 +23,7 @@ class Subscriber(Base):
 
             task = self._extract_msg(raw_data)
 
-            pyrun.run(**task)
+            runner.run(**task)
 
     def hello_world(self, limit=20):
         c = 0
