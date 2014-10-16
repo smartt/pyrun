@@ -1,0 +1,1 @@
+This is a small layer over pyzmq for calling/running remote code (using pyrun) over zeromq.  The provided examples use the Publisher/Subscriber pattern to send commands to "worker" processes.
