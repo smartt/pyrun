@@ -4,8 +4,8 @@ pyrun
 Python library for loading and running arbitrary Python packages based on string representations of the package and function names, like this:
 
 ```
-import pyrun
+from pyrun import runner
 
-pyrun.run(package='scripts/hello', function='run')
+runner.run(package='scripts/hello', function='run')
 
 ```
