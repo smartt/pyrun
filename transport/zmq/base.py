@@ -15,6 +15,8 @@ class Base(object):
         else:
             self.port = port
 
+        self.async = False
+
         self.topic = topic
         self.context = None
         self.socket = None
@@ -84,10 +86,13 @@ class Base(object):
         )
 
     def send(self, msg):
-        self.socket.send(msg)
+        if self.async:
+            self.socket.send(msg, zmq.NOBLOCK)
+        else:
+            self.socket.send(msg)
 
     def send_json(self, msg):
-        self.socket.send(json.dumps(msg))
+        self.send(json.dumps(msg))
 
     def recv_json(self):
         data = self.socket.recv()
